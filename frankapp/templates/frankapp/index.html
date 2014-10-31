@@ -1,0 +1,12 @@
+<h1>Frankenstein</h1>
+<form action="{% url 'polls:vote' poll.id %}" method="post">
+Actor<input type="text" name="actor"><br>
+Role<input type="text" name="role"><br>
+Event<input type="text" name="event"><br>
+Day<input type="text" name="day"><br>
+Time<input type="text" name="time"><br>
+Crew<input type="text" name="crew"><br>
+Responsibility<input type="text" name="responsibility">
+{% csrf_token %}
+<input type="submit" value="Search" />
+</form>

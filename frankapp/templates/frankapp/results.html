@@ -1,0 +1,9 @@
+{% if results_list %}
+    <ul>
+    {% for result in results_list %}
+        <li>{{ result.name }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
