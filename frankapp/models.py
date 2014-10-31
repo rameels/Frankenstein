@@ -12,7 +12,7 @@ class Events(models.Model):
 	stage = models.ForeignKey(Stages)
  
 class EventsTimes(models.Model):
-	daytime = models.DateTimeField
+	daytime = models.DateTimeField()
 	event = models.ForeignKey(Events)
  
 class Actors(models.Model):
