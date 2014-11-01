@@ -4,13 +4,13 @@ from django.db import models
 
 class Stages(models.Model):
 	name = models.CharField(max_length=30)
-	description = models.CharField(max_length=100)
+	description = models.CharField(max_length=300)
 
 class Events(models.Model):
-	name = models.CharField(max_length=30)
-	description = models.CharField(max_length=100)
+	name = models.CharField(max_length=100)
+	description = models.CharField(max_length=300)
 	duration = models.IntegerField()
-	stage_id = models.ForeignKey(Stages)
+	stage = models.ForeignKey(Stages)
 
 class EventsTimes(models.Model):
 	daytime = models.DateTimeField()

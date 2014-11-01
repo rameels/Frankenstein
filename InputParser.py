@@ -1,22 +1,27 @@
 import csv
 from frankapp.models import Stages, Events, Actors
 
-# with open('Event.csv', 'rb') as f:
-#     reader = csv.reader(f, delimiter=',')
-#     for row in reader:
-# 	
-# 		eventcreated = Events(
-# 		                      name = row[1],
-#                                       description = row[2],
-# 		                      duration = row[3],
-# 		                      stage_id = row[4])
-#                 eventcreated.save()
-
 with open('Stage.csv', 'rb') as f:
     reader = csv.reader(f, delimiter=',')
     reader.next()
     for row in reader:
-        stagecreated = Stages(
+        stagecreated, create = Stages.objects.get_or_create(
+            id = row[0],
             name = row[1],
             description = row[2])
-        stagecreated.save()
+        if (create):
+            stagecreated.save()
+            print "new Stages tuble created"
+
+with open('Event.csv', 'rb') as f:
+    reader = csv.reader(f, delimiter=',')
+    reader.next()
+    for row in reader:
+        eventcreated, create = Events.objects.get_or_create(
+            name = row[1],
+            description = row[2],
+            duration = row[3],
+            stage_id = Stages.objects.get(id = row[4]).id)
+        if (create):
+            eventcreated.save()
+            print "new Events tuble created"
