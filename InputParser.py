@@ -97,15 +97,11 @@ with open('CrewResps.csv', 'rb') as f:
         except:
             print row
             raise
-
+            
 with open('Eventstimes.csv', 'rb') as f:
     reader = csv.reader(f, delimiter=',')
     reader.next()
     for row in reader:
-##        print row[5]
-##        print datetime(2015,4,22,20,0)
-##        print datetime(row[1],row[2],row[3],row[4],row[5])
-##        print datetime(2015,4,22,20,0)
         try:
             evtmcreated, create = EventsTimes.objects.get_or_create(
                 id = row[0],
@@ -113,7 +109,38 @@ with open('Eventstimes.csv', 'rb') as f:
                 event = Events.objects.get(id = row[6]))
             if (create):
                 evtmcreated.save()
-                print "new CrewResponsibilities tuple created"
+                print "new Eventstimes tuple created"
+        except:
+            print row
+            raise
+
+with open('Actor.csv', 'rb') as f:
+    reader = csv.reader(f, delimiter=',')
+    reader.next()
+    for row in reader:
+        try:
+            actorcreated, create = Actors.objects.get_or_create(
+                id = row[0],
+                name = row[1])
+            if (create):
+                actorcreated.save()
+                print "new Actor tuple created"
+        except:
+            print row
+            raise
+
+with open('ActorsRoles.csv', 'rb') as f:
+    reader = csv.reader(f, delimiter=',')
+    reader.next()
+    for row in reader:
+        try:
+            actrl_created, create = ActorsRoles.objects.get_or_create(
+                actor = Actors.objects.get(id = row[0]),
+                role = Roles.objects.get(id = row[1]),
+                eventstimes = EventsTimes.objects.get(id = row[2]))
+            if (create):
+                actrl_created.save()
+                print "new ActorsRoles tuple created"
         except:
             print row
             raise
