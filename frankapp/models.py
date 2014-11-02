@@ -4,13 +4,9 @@ from django.db import models
 
 class Stages(models.Model):
 	name = models.CharField(max_length=30)
-<<<<<<< HEAD
 	description = models.CharField(max_length=100)
 	def __unicode__(self):
 		return self.name
-=======
-	description = models.CharField(max_length=300)
->>>>>>> ede4ce9467ed9e3ebd2b970bff8e697011d1c39b
 
 class Events(models.Model):
 	name = models.CharField(max_length=100)
