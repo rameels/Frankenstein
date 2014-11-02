@@ -4,7 +4,8 @@ from django.views.generic import RedirectView
 from frankapp import views
 
 urlpatterns = patterns('',
-	(r'^$', RedirectView.as_view(url='/search/')),
-    url(r'^search/people$', views.searchpeople),
-    url(r'^search/events$', views.searchevents),
+	(r'^$', RedirectView.as_view(url='/index/')),
+	url(r'^index/$', views.index),
+    url(r'^search/people/$', views.searchpeople),
+    url(r'^search/events/$', views.searchevents),
 )
