@@ -4,7 +4,9 @@ from django.db import models
 
 class Stages(models.Model):
 	name = models.CharField(max_length=30)
-	description = models.CharField(max_length=300)
+	description = models.CharField(max_length=100)
+	def __unicode__(self):
+		return self.name
 
 class Events(models.Model):
 	name = models.CharField(max_length=100)
@@ -25,7 +27,7 @@ class Roles(models.Model):
 class ActorsRoles(models.Model):
 	actor = models.ForeignKey(Actors)
 	role = models.ForeignKey(Roles)
-	stage = models.ForeignKey(Stages)
+	eventstimes = models.ForeignKey(EventsTimes)
     
 class Crew(models.Model):
 	name = models.CharField(max_length=30)

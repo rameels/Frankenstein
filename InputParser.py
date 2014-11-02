@@ -1,5 +1,7 @@
 import csv
 from frankapp.models import Stages, Events, EventsTimes, Actors, Roles, ActorsRoles, Crew, Responsibilities, CrewResponsibilities
+from datetime import datetime
+from django.utils import timezone
 
 with open('Stage.csv', 'rb') as f:
     reader = csv.reader(f, delimiter=',')
@@ -91,6 +93,26 @@ with open('CrewResps.csv', 'rb') as f:
                 stage = Stages.objects.get(id = row[2]))
             if (create):
                 cresp_created.save()
+                print "new CrewResponsibilities tuple created"
+        except:
+            print row
+            raise
+
+with open('Eventstimes.csv', 'rb') as f:
+    reader = csv.reader(f, delimiter=',')
+    reader.next()
+    for row in reader:
+##        print row[5]
+##        print datetime(2015,4,22,20,0)
+##        print datetime(row[1],row[2],row[3],row[4],row[5])
+##        print datetime(2015,4,22,20,0)
+        try:
+            evtmcreated, create = EventsTimes.objects.get_or_create(
+                id = row[0],
+                daytime = datetime(int(row[1]),int(row[2]),int(row[3]),int(row[4]),int(row[5])),
+                event = Events.objects.get(id = row[6]))
+            if (create):
+                evtmcreated.save()
                 print "new CrewResponsibilities tuple created"
         except:
             print row
