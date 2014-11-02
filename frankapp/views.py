@@ -10,7 +10,7 @@ def searchpeople(request):
 	if 'types' in request.GET:
 		types = request.GET['types'])
 		if 'actor' in types:
-			
+			actor = types['actor']
 		if 'crew' in types:
 
 		if 'role' in types:
