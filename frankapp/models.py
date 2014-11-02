@@ -5,6 +5,8 @@ from django.db import models
 class Stages(models.Model):
 	name = models.CharField(max_length=30)
 	description = models.CharField(max_length=100)
+	def __unicode__(self):
+		return self.name
 
 class Events(models.Model):
 	name = models.CharField(max_length=30)

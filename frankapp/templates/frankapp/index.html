@@ -1,12 +1,20 @@
 <h1>Frankenstein</h1>
-<form action="../results/" method="post">
-Actor<input type="text" name="actor"><br>
-Role<input type="text" name="role"><br>
-Event<input type="text" name="event"><br>
-Day<input type="text" name="day"><br>
-Time<input type="text" name="time"><br>
-Crew<input type="text" name="crew"><br>
-Responsibility<input type="text" name="responsibility">
-{% csrf_token %}
-<input type="submit" value="Search" />
+<form action="../results/" method="get">
+	<label for="stage">Stage</label>
+	<input type="text" name="stage"><br>
+	<label for="actor">Actor</label>
+	<input type="text" name="actor"><br>
+	<label for="role">Role</label>
+	<input type="text" name="role"><br>
+	<label for="event">Event</label>
+	<input type="text" name="event"><br>
+	<label for="day">Day</label>
+	<input type="text" name="day"><br>
+	<label for="time">Time</label>
+	<input type="text" name="time"><br>
+	<label for="crew">Crew</label>
+	<input type="text" name="crew"><br>
+	<label for="responsibility">Responsibility</label>
+	<input type="text" name="responsibility"><br>
+	<input type="submit" value="Search" />
 </form>
