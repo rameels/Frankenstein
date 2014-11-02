@@ -1,12 +1,87 @@
-<h1>Frankenstein</h1>
-<form action="../results/" method="post">
-Actor<input type="text" name="actor"><br>
-Role<input type="text" name="role"><br>
-Event<input type="text" name="event"><br>
-Day<input type="text" name="day"><br>
-Time<input type="text" name="time"><br>
-Crew<input type="text" name="crew"><br>
-Responsibility<input type="text" name="responsibility">
-{% csrf_token %}
-<input type="submit" value="Search" />
-</form>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+    <script src="../js/index.js"></script>
+  </head>
+  <body>
+    <div class="page-contents">
+      <div class="frank-logo"></div>
+      <div class="search-tabs">
+        <div class="search-tab" data-tab="people-search">
+          <span class="search-tab-label"> People </span>
+        </div>
+        <div class="search-tab inactive-tab" data-tab="events-search">
+          <span class="search-tab-label"> Events </span>
+        </div>
+      </div>
+
+      <div class="people-search tab-content active-tab-content">
+        <div class="people-types">
+          <label class="people-type-checkbox">
+            <input type="checkbox" id="people-type-actor" name="people-type" value="actor" class="regular-checkbox" />
+            <div class="checkbox-style"></div>
+            <div class="people-type-icon">
+              <i class="icon icon-actor"></i>
+              <span class="people-type-label"> Actor </span>
+            </div>
+          </label>
+
+          <label class="people-type-checkbox">
+            <input type="checkbox" name="people-type" value="crew" class="regular-checkbox" />
+            <div class="checkbox-style"></div>
+            <div class="people-type-icon">
+              <i class="icon icon-crew"></i>
+              <span class="people-type-label"> Crew </span>
+            </div>
+          </label>
+
+          <label class="people-type-checkbox">
+            <input type="checkbox" name="people-type" value="role" class="regular-checkbox" />
+            <div class="checkbox-style"></div>
+            <div class="people-type-icon">
+              <i class="icon icon-role"></i>
+              <span class="people-type-label"> Role </span>
+            </div>
+          </label>
+        </div>
+
+        <input type="text" class="people-name-input" name="people-name" placeholder="Name..." />
+
+        <div class="actor-performing-date">
+          <span> Performing between </span>
+          <input type="text" name="performing-start" class="performing-start-date" />
+          <span> and </span>
+          <input type="text" name="performing-end" class="performing-end-date" />
+        </div>
+
+
+        <div class="people-search-button-container">
+          <div class="people-search-button">Search</div>
+        </div>
+      </div>
+
+      <div class="events-search tab-content">
+        <input type="text" class="event-name-input" name="event-name" placeholder="Event's name..." />
+
+        <div class="event-performing-date">
+          <span> Happening between </span>
+          <input type="text" name="event-start" class="event-start-date" />
+          <span> and </span>
+          <input type="text" name="event-end" class="event-end-date" />
+        </div>
+
+
+        <div class="events-search-button-container">
+          <div class="events-search-button">Search</div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
