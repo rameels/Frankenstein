@@ -25,7 +25,7 @@ class Roles(models.Model):
 class ActorsRoles(models.Model):
 	actor = models.ForeignKey(Actors)
 	role = models.ForeignKey(Roles)
-	stage = models.ForeignKey(Stages)
+	eventstimes = models.ForeignKey(EventsTimes)
     
 class Crew(models.Model):
 	name = models.CharField(max_length=30)
