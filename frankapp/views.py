@@ -1,12 +1,17 @@
 from django.shortcuts import render
 
-from frankapp.models import Stages
+from frankapp.models import *
 
 # Create your views here.
-def index(request):
-	return render(request, 'frankapp/index.html')
+def search(request):
+	return render(request, 'frankapp/search.html')
 
-def results(request):
+def searchpeople(request):
 	if 'stage' in request.GET:
 		results = Stages.objects.filter(name=request.GET['stage'])
-	return render(request, 'frankapp/results.html', {'results_list': results})
+	return render(request, 'frankapp/searchpeople.html', {'results_list': results})
+
+def searchevents(request):
+	if 'stage' in request.GET:
+		results = Stages.objects.filter(name=request.GET['stage'])
+	return render(request, 'frankapp/searchevents.html', {'results_list': results})
