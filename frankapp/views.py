@@ -1,5 +1,6 @@
+import json
 from django.shortcuts import render
-
+from django.http import HttpResponse
 from frankapp.models import *
 
 # Create your views here.
@@ -8,6 +9,7 @@ def index(request):
 
 def searchpeople(request):
     android = False
+    
     if 'android' in request.GET:
         if 'true' in request.GET['android']:
             android = True;
@@ -28,7 +30,7 @@ def searchpeople(request):
         return render(request, 'frankapp/people.html', {'results': results})
     else:
         print "should return json"
-        return render(request, 'frankapp/people.html', {'results': results})
+        return HttpResponse(json.dumps(resultsToDict(results)), content_type="application/json")
     
 def searchevents(request):
     results_list = []
@@ -41,3 +43,9 @@ def searchevents(request):
         if 'role' in types:
             role = types['role']
     return render(request, 'frankapp/events.html', {'results_list': results})
+
+def resultsToDict(results):
+    response_data = {}
+    for (result in results):
+        response_data[result.actor.name] = result.role.name
+    return response_data
