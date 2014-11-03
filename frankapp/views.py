@@ -7,6 +7,9 @@ def index(request):
     return render(request, 'frankapp/index.html')
 
 def searchpeople(request):
+    android = True
+    if 'android' in request.GET:
+        print "yeah?"
     if 'types' in request.GET:
         types = request.GET['types']
         print request.GET.get('name')
