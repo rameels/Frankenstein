@@ -76,4 +76,10 @@ $(document).ready(function() {
 
     count += 1;
   });
+
+
+  $('.actor-image').each(function() {
+    var photoSource = '../../static/frankapp/images/actor' + Math.floor((Math.random() * 5) + 1) + '.jpg';
+    $(this).find('img').attr('src', photoSource);
+  });
 });
