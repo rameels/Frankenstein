@@ -34,6 +34,8 @@ class ActorsRoles(models.Model):
 	actor = models.ForeignKey(Actors)
 	role = models.ForeignKey(Roles)
 	eventstimes = models.ForeignKey(EventsTimes)
+	def __unicode__(self):
+		return self.actor.name + ": " + self.role.name
     
 class Crew(models.Model):
 	name = models.CharField(max_length=30)

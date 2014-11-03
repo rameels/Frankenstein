@@ -1,13 +1,13 @@
 <h1>Search Results</h1>
-{% if results_list %}
+{% if results %}
     <ul>
-    {% for result in results_list %}
-        <li>{{ result.name }}: {{ result.description }}</li>
+    {% for result in results.all %}
+        <li>{{ result.actor.name }}: {{ result.role.name }}</li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No results found.</p>
 {% endif %}
-<form action="../index/" method="get">
+<form action="../../index/" method="get">
 	<input type="submit" value="Back to search" />
 </form>

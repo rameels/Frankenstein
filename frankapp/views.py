@@ -7,16 +7,18 @@ def index(request):
     return render(request, 'frankapp/index.html')
 
 def searchpeople(request):
-    results_list = []
     if 'types' in request.GET:
         types = request.GET['types']
+        print request.GET.get('name')
         if 'actor' in types:
-            actor = types['actor']
-        if 'crew' in types:
-            crew = types['crew']
-        if 'role' in types:
-            role = types['role']
-    return render(request, 'frankapp/search/people.html', {'results_list': results})
+            results = ActorsRoles.objects.filter(actor__name=request.GET.get('name'))
+        #if 'crew' in types:
+        #crew = types['crew']
+        #if 'role' in types:
+        #role = types['role']
+        for result in results:
+            print result.actor.name + ": " + result.role.name
+    return render(request, 'frankapp/people.html', {'results': results})
 
 def searchevents(request):
     results_list = []
@@ -28,4 +30,4 @@ def searchevents(request):
             crew = types['crew']
         if 'role' in types:
             role = types['role']
-    return render(request, 'frankapp/search/people.html', {'results_list': results})
+    return render(request, 'frankapp/events.html', {'results_list': results})
