@@ -13,16 +13,22 @@ class Events(models.Model):
 	description = models.CharField(max_length=300)
 	duration = models.IntegerField()
 	stage = models.ForeignKey(Stages)
+	def __unicode__(self):
+		return self.name
 
 class EventsTimes(models.Model):
 	daytime = models.DateTimeField()
 	event = models.ForeignKey(Events)
- 
+
 class Actors(models.Model):
 	name = models.CharField(max_length=30)
+	def __unicode__(self):
+		return self.name
     
 class Roles(models.Model):
 	name = models.CharField(max_length=30)
+	def __unicode__(self):
+		return self.name
  
 class ActorsRoles(models.Model):
 	actor = models.ForeignKey(Actors)
@@ -31,9 +37,13 @@ class ActorsRoles(models.Model):
     
 class Crew(models.Model):
 	name = models.CharField(max_length=30)
+	def __unicode__(self):
+		return self.name
     
 class Responsibilities(models.Model):
 	name = models.CharField(max_length=30)
+	def __unicode__(self):
+		return self.name
  
 class CrewResponsibilities(models.Model):
 	crew = models.ForeignKey(Crew)

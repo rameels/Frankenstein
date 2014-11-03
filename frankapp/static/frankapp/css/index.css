@@ -1,0 +1,171 @@
+.page-contents {
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-top: 100px;
+}
+
+.frank-logo {
+  background-image: url(../images/frankenstein-logo.jpg);
+  height: 104px;
+  margin-left: 470px;
+  margin-bottom: 20px;
+  width: 324px;
+}
+
+.regular-checkbox {
+  display: none;
+}
+
+.regular-checkbox + div {
+  background-color: #fafafa;
+  border: 1px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+  padding: 9px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+.regular-checkbox + div:active, .regular-checkbox:checked + div:active {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.regular-checkbox:checked + div {
+  background-color: #e9ecee;
+  border: 1px solid #adb8c0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+  color: #99a1a7;
+}
+
+.regular-checkbox:checked + div:after {
+  content: '\2714';
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+  color: #99a1a7;
+}
+
+.search-tabs {
+  margin: auto;
+  width: 240px;
+}
+
+.search-tab {
+  border-radius: .2857rem;
+  box-shadow: 0 0 0 1px rgba(39,41,43,.15) inset;
+  color: rgba(0,0,0,.6)!important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 800;
+  text-align: center;
+  transition: border-radius .1s ease,width .2s ease;
+}
+
+.search-tab.inactive-tab {
+  background-color: #dcddde;
+  color: rgba(0,0,0,.4);
+  cursor: default;
+  opacity: 0.3;
+}
+
+.search-tab-label {
+  display: inline-block;
+  margin: 15px 30px;
+}
+
+.people-types {
+  margin-left: 370px;
+  margin-top: 50px;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active-tab-content {
+  display: block;
+}
+
+.tab-content .people-type-icon {
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.tab-content .checkbox-style {
+  margin-right: 20px;
+  position: relative;
+  top: -30px;
+}
+
+.people-type-label {
+  display: block;
+  font-size: 20px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.icon {
+  display: block;
+  height: 75px;
+  width: 75px;
+}
+
+.icon-actor {
+  background: url(../images/icon-actor.jpg);
+}
+
+.icon-crew {
+  background: url(../images/icon-crew.gif);
+}
+
+.icon-role {
+  background: url(../images/icon-role.png);
+}
+
+.people-name-input, .event-name-input {
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
+  color: #565a5c;
+  font-size: 18px;
+  height: 35px;
+  margin-left: 370px;
+  margin-top: 25px;
+  padding: 5px 10px;
+  width: 490px;
+}
+
+.actor-performing-date, .event-performing-date {
+  display: inline-block;
+  font-size: 18px;
+  margin-left: 370px;
+  margin-top: 25px;
+}
+
+.actor-performing-date input, .event-performing-date input {
+  height: 20px;
+  margin: auto 10px;
+  width: 131px;
+}
+
+.people-search-button-container, .events-search-button-container {
+  display: inline-block;
+  margin-left: 370px;
+  margin-top: 25px;
+  width: 512px;
+}
+
+.people-search-button, .events-search-button {
+  border-radius: 7px;
+  box-shadow: 0 0 0 1px rgba(39,41,43,.15) inset;
+  color: rgba(0,0,0,.6)!important;
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-weight: 800;
+  padding: 10px 20px;
+  text-align: center;
+}
+
