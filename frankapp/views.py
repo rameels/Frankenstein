@@ -44,8 +44,8 @@ def searchevents(request):
             role = types['role']
     return render(request, 'frankapp/events.html', {'results_list': results})
 
-def resultsToDict(results):
-    response_data = {}
-    for (result in results):
-        response_data[result.actor.name] = result.role.name
-    return response_data
+##def resultsToDict(results):
+##    response_data = {}
+##    for (result in results):
+##        response_data[result.actor.name] = result.role.name
+##    return response_data
