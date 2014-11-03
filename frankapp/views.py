@@ -7,9 +7,11 @@ def index(request):
     return render(request, 'frankapp/index.html')
 
 def searchpeople(request):
-    android = True
+    android = False
     if 'android' in request.GET:
-        print "yeah?"
+        if 'true' in request.GET['android']:
+            android = True;
+            
     if 'types' in request.GET:
         types = request.GET['types']
         print request.GET.get('name')
@@ -21,8 +23,13 @@ def searchpeople(request):
         #role = types['role']
         for result in results:
             print result.actor.name + ": " + result.role.name
-    return render(request, 'frankapp/people.html', {'results': results})
 
+    if android == False:
+        return render(request, 'frankapp/people.html', {'results': results})
+    else:
+        print "should return json"
+        return render(request, 'frankapp/people.html', {'results': results})
+    
 def searchevents(request):
     results_list = []
     if 'types' in request.GET:
