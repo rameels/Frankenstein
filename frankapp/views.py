@@ -20,7 +20,7 @@ def searchpeople(request):
 
 def searchevents(request):
     results_list = []
-	if 'types' in request.GET:
+    if 'types' in request.GET:
         types = request.GET['types']
         if 'actor' in types:
             actor = types['actor']
