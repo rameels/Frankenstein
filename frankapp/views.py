@@ -44,8 +44,13 @@ def searchevents(request):
             role = types['role']
     return render(request, 'frankapp/events.html', {'results_list': results})
 
-##def resultsToDict(results):
-##    response_data = {}
-##    for (result in results):
-##        response_data[result.actor.name] = result.role.name
-##    return response_data
+def resultsToDict(results):
+    response_data = {}
+    i = 1
+    for result in results:
+        if (result.actor.name not in response_data):
+            response_data[result.actor.name] = result.role.name
+        else:
+            response_data[result.actor.name + '_' + str(i)] = result.role.name
+            i = i + 1
+    return response_data
