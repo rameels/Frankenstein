@@ -11,6 +11,11 @@ def index(request):
 
 def searchpeople(request):
     android = False
+    actors_results = []
+    crew_results = []
+    role_results = []
+
+    results = []
     
     if 'android' in request.GET:
         if 'true' in request.GET['android']:
@@ -18,11 +23,8 @@ def searchpeople(request):
             
     if 'types' in request.GET:
         types = request.GET['types']
-        if 'name' in request.GET:
-            name = request.GET.get('name')
+        name = request.GET.get('name')
         if 'actor' in types:
-
-            results = ActorsRoles.objects.filter(actor__name__contains=name)
 
             if 'startDate' and 'endDate' in request.GET:
                 start_date = urllib.unquote(request.GET.get('startDate')).decode('utf8').split('/')
@@ -33,14 +35,14 @@ def searchpeople(request):
             else:
                 results = ActorsRoles.objects.filter(actor__name__contains=name)
 
-        elif 'crew' in types:
+        if 'crew' in types:
             results = CrewResponsibilities.objects.filter(crew__name__contains=name)
-        elif 'role' in types:
+        if 'role' in types:
             results = ActorsRoles.objects.filter(role__name__contains=name)
             
         print str(results)
     if android == False:
-        return render(request, 'frankapp/people.html', {'results': results})
+        return render(request, 'frankapp/people.html', {'actors_results': actors_results})
     else:
         print "should return json"
         print resultsToDict(results)
