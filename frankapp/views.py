@@ -12,15 +12,17 @@ def searchpeople(request):
     
     if 'android' in request.GET:
         if 'true' in request.GET['android']:
-            android = True;
+            android = True
             
     if 'types' in request.GET:
         types = request.GET['types']
         name = request.GET.get('name')
+        performing_start = request.GET.get('performing_start')
+        performing_end = request.GET.get('performing_end')
         if 'actor' in types:
-            results = ActorsRoles.objects.filter(actor__name__contains=name)
+            results = ActorsRoles.objects.filter(actor__name__contains=name, eventstimes__daytime.date()>=performing_start, eventstimes__daytime.date()<=performing_end)
         elif 'crew' in types:
-            results = CrewResponsibilities.objects.filter(crew__name_contains=name)
+            results = CrewResponsibilities.objects.filter(crew__name__contains=name)
         elif 'role' in types:
             results = ActorsRoles.objects.filter(role__name__contains=name)
             
