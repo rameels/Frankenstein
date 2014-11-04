@@ -44,11 +44,12 @@ $(document).ready(function() {
   });
 
   $('.events-search-button').on('click', function() {
-    var url = '/search/events';
+    var url = '/search/events?';
 
     var name = $('.event-name-input').val();
     if (name) {
       url += '?name=' + name;
+      url += 'name=' + name;
     }
 
     var startDate = $('.event-start-date').val();

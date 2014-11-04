@@ -14,15 +14,18 @@ def searchpeople(request):
     actors_results = []
     crew_results = []
     role_results = []
+
+    results = []
+    
     if 'android' in request.GET:
         if 'true' in request.GET['android']:
             android = True
             
     if 'types' in request.GET:
         types = request.GET['types']
-        if 'name' in request.GET:
-            name = request.GET.get('name')
+        name = request.GET.get('name')
         if 'actor' in types:
+
             if 'startDate' and 'endDate' in request.GET:
                 start_date = urllib.unquote(request.GET.get('startDate')).decode('utf8').split('/')
                 start_datetime = datetime(int(start_date[2]), int(start_date[0]), int(start_date[1]),0,0)
