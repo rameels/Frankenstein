@@ -59,18 +59,18 @@ def searchevents(request):
     if 'android' in request.GET:
         if 'true' in request.GET['android']:
             android = True
-        if 'name' in request.GET:
-            name = request.GET.get('name')
-        if 'startDate' and 'endDate' in request.GET:
-            start_date = urllib.unquote(request.GET.get('startDate')).decode('utf8').split('/')
-            start_datetime = datetime(int(start_date[2]), int(start_date[0]), int(start_date[1]),0,0)
-            end_date = urllib.unquote(request.GET.get('endDate')).decode('utf8').split('/')
-            end_datetime = datetime(int(end_date[2]), int(end_date[0]), int(end_date[1]),0,0)
-            results = EventsTimes.objects.filter(event__name__contains=name, daytime__gte=start_datetime, daytime__lte=end_datetime)
-        else:
-            results = EventsTimes.objects.filter(event__name__contains=name)
-        resultsdict = {'results' : results}
-        print str(results)
+    if 'name' in request.GET:
+        name = request.GET.get('name')
+    if 'startDate' and 'endDate' in request.GET:
+        start_date = urllib.unquote(request.GET.get('startDate')).decode('utf8').split('/')
+        start_datetime = datetime(int(start_date[2]), int(start_date[0]), int(start_date[1]),0,0)
+        end_date = urllib.unquote(request.GET.get('endDate')).decode('utf8').split('/')
+        end_datetime = datetime(int(end_date[2]), int(end_date[0]), int(end_date[1]),0,0)
+        results = EventsTimes.objects.filter(event__name__contains=name, daytime__gte=start_datetime, daytime__lte=end_datetime)
+    else:
+        results = EventsTimes.objects.filter(event__name__contains=name)
+    resultsdict = {'results' : results}
+    print str(results)
     if android == False:
         print resultsdict
         return render(request, 'frankapp/events.html', resultsdict)
