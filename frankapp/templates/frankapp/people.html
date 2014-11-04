@@ -85,6 +85,7 @@
       </div>
 
       <div class="search-results">
+      	{% if actors_results %}
       	{% for actors_result in actors_results %}
         <div class="people-search-result search-result">
           <div class="search-result-slider" style="width: 430px; height: 100px">
@@ -93,18 +94,18 @@
                 <img src="{% static "frankapp/images/" %}"></img>
               </div>
               <div class="actor-information">
-                <div class="actor-information-name">{{ actors_result.actor.name }}: {{ actors_result.role.name }}</div>
+                <div class="actor-information-name">{{ actors_result.actor.name }}</div>
                 <div></div>
               </div>
             </div>
             <div data-slidr="two">
               <div class="performance-times-roles">
                 <div class="performance-times">
-                  <div></div>
+                  <div>{{ actors_result.eventstimes.daytime }}</div>
                 </div>
                 <div class="performance-times-roles-divider"></div>
                 <div class="performance-roles">
-                  <div></div>
+                  <div>{{ actors_result.role.name }}</div>
                 </div>
               </div>
             </div>
@@ -114,7 +115,71 @@
           <a href="#" class="slider-left">Go back</a>
         </div>
         {% endfor %}
+        {% endif %}
 
+        {% if crew_results %}
+      	{% for crew_result in crew_results %}
+        <div class="people-search-result search-result">
+          <div class="search-result-slider" style="width: 430px; height: 100px">
+            <div data-slidr="one">
+              <div class="actor-image">
+                <img src="{% static "frankapp/images/" %}"></img>
+              </div>
+              <div class="actor-information">
+                <div class="actor-information-name">{{ crew_result.crew.name }}</div>
+                <div></div>
+              </div>
+            </div>
+            <div data-slidr="two">
+              <div class="performance-times-roles">
+                <div class="performance-times">
+                  <div>{{ crew_result.stage.name }}: {{ crew_result.stage.description }}</div>
+                </div>
+                <div class="performance-times-roles-divider"></div>
+                <div class="performance-roles">
+                  <div>{{ crew_result.responsibility.name }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="slider-right">See performance times</a>
+          <a href="#" class="slider-left">Go back</a>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if role_results %}
+      	{% for role_result in role_results %}
+        <div class="people-search-result search-result">
+          <div class="search-result-slider" style="width: 430px; height: 100px">
+            <div data-slidr="one">
+              <div class="actor-image">
+                <img src="{% static "frankapp/images/" %}"></img>
+              </div>
+              <div class="actor-information">
+                <div class="actor-information-name">{{ role_result.role.name }}</div>
+                <div></div>
+              </div>
+            </div>
+            <div data-slidr="two">
+              <div class="performance-times-roles">
+                <div class="performance-times">
+                  <div>{{ role_result.eventstimes.daytime }}</div>
+                </div>
+                <div class="performance-times-roles-divider"></div>
+                <div class="performance-roles">
+                  <div>{{ role_result.actor.name }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="slider-right">See performance times</a>
+          <a href="#" class="slider-left">Go back</a>
+        </div>
+        {% endfor %}
+        {% endif %}
       </div>
     </div>
   </body>
