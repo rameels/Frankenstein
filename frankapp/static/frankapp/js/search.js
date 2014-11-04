@@ -43,6 +43,27 @@ $(document).ready(function() {
     window.location = url;
   });
 
+  $('.events-search-button').on('click', function() {
+    var url = '/search/events';
+
+    var name = $('.event-name-input').val();
+    if (name) {
+      url += '&name=' + name;
+    }
+
+    var startDate = $('.event-start-date').val();
+    if (startDate) {
+      url += '&startDate=' + encodeURIComponent(startDate);
+    }
+
+    var endDate = $('.event-end-date').val();
+    if (endDate) {
+      url += '&endDate=' + encodeURIComponent(endDate);
+    }
+
+    window.location = url;
+  });
+
   var count = 1;
   $('.search-result').each(function() {
     var $slider = $(this).children().first();

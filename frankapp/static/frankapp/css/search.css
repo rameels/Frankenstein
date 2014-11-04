@@ -258,3 +258,23 @@
   margin-right: 35px;
 }
 
+.event-search-result {
+  height: 111px;
+  overflow: hidden;
+  width: 600px;
+}
+
+.event-times {
+  display: inline-block;
+  float: left;
+  margin-top: 15px;
+  width: 150px;
+}
+
+.event-times-roles-divider {
+  border: 1px solid #DCDCDC;
+  display: inline-block;
+  float: left;
+  height: 90px;
+  margin: 15px 40px auto 25px;
+}
