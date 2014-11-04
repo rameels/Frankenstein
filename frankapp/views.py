@@ -34,15 +34,20 @@ def searchpeople(request):
                 results = ActorsRoles.objects.filter(actor__name__contains=name, eventstimes__daytime__gte=start_datetime, eventstimes__daytime__lte=end_datetime)
             else:
                 results = ActorsRoles.objects.filter(actor__name__contains=name)
-
-        if 'crew' in types:
+            actors_results = results
+            resultsdict = {'actors_results' : actors_results}
+        elif 'crew' in types:
             results = CrewResponsibilities.objects.filter(crew__name__contains=name)
-        if 'role' in types:
+            crew_results = results
+            resultsdict = {'crew_results' : crew_results}
+        elif 'role' in types:
             results = ActorsRoles.objects.filter(role__name__contains=name)
-            
+            role_results = results
+            resultsdict = {'role_results' : role_results}
         print str(results)
     if android == False:
-        return render(request, 'frankapp/people.html', {'actors_results': actors_results})
+        print resultsdict
+        return render(request, 'frankapp/people.html', resultsdict)
     else:
         print "should return json"
         print resultsToDict(results)
