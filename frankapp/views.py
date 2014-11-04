@@ -18,11 +18,11 @@ def searchpeople(request):
         types = request.GET['types']
         name = request.GET.get('name')
         if 'actor' in types:
-            results = ActorsRoles.objects.filter(actor__name=name)
+            results = ActorsRoles.objects.filter(actor__name__contains=name)
         elif 'crew' in types:
-            results = CrewResponsibilities.objects.filter(crew__name=name)
+            results = CrewResponsibilities.objects.filter(crew__name_contains=name)
         elif 'role' in types:
-            results = ActorsRoles.objects.filter(role__name=name)
+            results = ActorsRoles.objects.filter(role__name__contains=name)
             
         print str(results)
     if android == False:
