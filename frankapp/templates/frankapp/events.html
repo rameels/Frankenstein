@@ -85,77 +85,22 @@
       </div>
 
       <div class="search-results">
+        {% for result in results %}
         <div class="event-search-result search-result">
           <div class="event-information">
-            <div class="event-information-name">Act 123 - Stage 1</div>
+            <div class="event-information-name">{{ result.event.name }}</div>
             <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, mi vel dictum sollicitudin, sem nulla cursus nulla, lacinia tristique quam augue et.
+            {{ result.event.description }}
             </div>
           </div>
 
           <div class="event-times-roles-divider"></div>
 
           <div class="event-times">
-            <div>03/05/14 - 5:30 p.m.</div>
-            <div>03/15/14 - 10:30 a.m.</div>
-            <div>03/20/14 - 8:30 p.m.</div>
-            <div>05/05/14 - 1:30 p.m.</div>
+            <div>{{ result.daytime }}</div>
           </div>
         </div>
-
-        <div class="event-search-result search-result">
-          <div class="event-information">
-            <div class="event-information-name">Act 123 - Stage 1</div>
-            <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, mi vel dictum sollicitudin, sem nulla cursus nulla, lacinia tristique quam augue et.
-            </div>
-          </div>
-
-          <div class="event-times-roles-divider"></div>
-
-          <div class="event-times">
-            <div>03/05/14 - 5:30 p.m.</div>
-            <div>03/15/14 - 10:30 a.m.</div>
-            <div>03/20/14 - 8:30 p.m.</div>
-            <div>05/05/14 - 1:30 p.m.</div>
-          </div>
-        </div>
-
-        <div class="event-search-result search-result">
-          <div class="event-information">
-            <div class="event-information-name">Act 123 - Stage 1</div>
-            <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, mi vel dictum sollicitudin, sem nulla cursus nulla, lacinia tristique quam augue et.
-            </div>
-          </div>
-
-          <div class="event-times-roles-divider"></div>
-
-          <div class="event-times">
-            <div>03/05/14 - 5:30 p.m.</div>
-            <div>03/15/14 - 10:30 a.m.</div>
-            <div>03/20/14 - 8:30 p.m.</div>
-            <div>05/05/14 - 1:30 p.m.</div>
-          </div>
-        </div>
-
-        <div class="event-search-result search-result">
-          <div class="event-information">
-            <div class="event-information-name">Act 123 - Stage 1</div>
-            <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, mi vel dictum sollicitudin, sem nulla cursus nulla, lacinia tristique quam augue et.
-            </div>
-          </div>
-
-          <div class="event-times-roles-divider"></div>
-
-          <div class="event-times">
-            <div>03/05/14 - 5:30 p.m.</div>
-            <div>03/15/14 - 10:30 a.m.</div>
-            <div>03/20/14 - 8:30 p.m.</div>
-            <div>05/05/14 - 1:30 p.m.</div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </body>

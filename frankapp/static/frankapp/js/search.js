@@ -48,7 +48,6 @@ $(document).ready(function() {
 
     var name = $('.event-name-input').val();
     if (name) {
-      url += '?name=' + name;
       url += 'name=' + name;
     }
 
