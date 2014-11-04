@@ -85,31 +85,27 @@
       </div>
 
       <div class="search-results">
+      	{% if actors_results %}
+      	{% for actors_result in actors_results %}
         <div class="people-search-result search-result">
           <div class="search-result-slider" style="width: 430px; height: 100px">
             <div data-slidr="one">
               <div class="actor-image">
-                <img src="../../static/frankapp/images/"></img>
+                <img src="{% static "frankapp/images/" %}"></img>
               </div>
               <div class="actor-information">
-                <div class="actor-information-name">Kien Hoang</div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, mi vel dictum sollicitudin, sem nulla cursus nulla, lacinia tristique quam augue et nulla. Maecenas ultrices eros non dui ultricies lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin porttitor magna quis rhoncus venenatis. Morbi sed sem nec leo lacinia hendrerit. Curabitur vel leo porttitor, dapibus felis et, luctus libero. Nullam est tellus, eleifend eget vehicula venenatis, luctus dictum risus.</div>
+                <div class="actor-information-name">{{ actors_result.actor.name }}</div>
+                <div></div>
               </div>
             </div>
             <div data-slidr="two">
               <div class="performance-times-roles">
                 <div class="performance-times">
-                  <div>03/05/14 5:30 p.m.</div>
-                  <div>03/15/14 10:30 a.m.</div>
-                  <div>03/20/14 8:30 p.m.</div>
-                  <div>05/05/14 1:30 p.m.</div>
+                  <div>{{ actors_result.eventstimes.daytime }}</div>
                 </div>
                 <div class="performance-times-roles-divider"></div>
                 <div class="performance-roles">
-                  <div>Role: Frankenstein</div>
-                  <div>Role: Monster</div>
-                  <div>Role: Tree</div>
-                  <div>Role: The Fucking Eagle</div>
+                  <div>{{ actors_result.role.name }}</div>
                 </div>
               </div>
             </div>
@@ -118,32 +114,30 @@
           <a href="#" class="slider-right">See performance times</a>
           <a href="#" class="slider-left">Go back</a>
         </div>
+        {% endfor %}
+        {% endif %}
 
+        {% if crew_results %}
+      	{% for crew_result in crew_results %}
         <div class="people-search-result search-result">
           <div class="search-result-slider" style="width: 430px; height: 100px">
             <div data-slidr="one">
               <div class="actor-image">
-                <img src="../../static/frankapp/images/"></img>
+                <img src="{% static "frankapp/images/" %}"></img>
               </div>
               <div class="actor-information">
-                <div class="actor-information-name">Kien Hoang</div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, mi vel dictum sollicitudin, sem nulla cursus nulla, lacinia tristique quam augue et nulla. Maecenas ultrices eros non dui ultricies lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin porttitor magna quis rhoncus venenatis. Morbi sed sem nec leo lacinia hendrerit. Curabitur vel leo porttitor, dapibus felis et, luctus libero. Nullam est tellus, eleifend eget vehicula venenatis, luctus dictum risus.</div>
+                <div class="actor-information-name">{{ crew_result.crew.name }}</div>
+                <div></div>
               </div>
             </div>
             <div data-slidr="two">
               <div class="performance-times-roles">
                 <div class="performance-times">
-                  <div>03/05/14 5:30 p.m.</div>
-                  <div>03/15/14 10:30 a.m.</div>
-                  <div>03/20/14 8:30 p.m.</div>
-                  <div>05/05/14 1:30 p.m.</div>
+                  <div>{{ crew_result.stage.name }}: {{ crew_result.stage.description }}</div>
                 </div>
                 <div class="performance-times-roles-divider"></div>
                 <div class="performance-roles">
-                  <div>Role: Frankenstein</div>
-                  <div>Role: Monster</div>
-                  <div>Role: Tree</div>
-                  <div>Role: The Fucking Eagle</div>
+                  <div>{{ crew_result.responsibility.name }}</div>
                 </div>
               </div>
             </div>
@@ -152,32 +146,30 @@
           <a href="#" class="slider-right">See performance times</a>
           <a href="#" class="slider-left">Go back</a>
         </div>
+        {% endfor %}
+        {% endif %}
 
+        {% if role_results %}
+      	{% for role_result in role_results %}
         <div class="people-search-result search-result">
           <div class="search-result-slider" style="width: 430px; height: 100px">
             <div data-slidr="one">
               <div class="actor-image">
-                <img src="../../static/frankapp/images/"></img>
+                <img src="{% static "frankapp/images/" %}"></img>
               </div>
               <div class="actor-information">
-                <div class="actor-information-name">Kien Hoang</div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, mi vel dictum sollicitudin, sem nulla cursus nulla, lacinia tristique quam augue et nulla. Maecenas ultrices eros non dui ultricies lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin porttitor magna quis rhoncus venenatis. Morbi sed sem nec leo lacinia hendrerit. Curabitur vel leo porttitor, dapibus felis et, luctus libero. Nullam est tellus, eleifend eget vehicula venenatis, luctus dictum risus.</div>
+                <div class="actor-information-name">{{ role_result.role.name }}</div>
+                <div></div>
               </div>
             </div>
             <div data-slidr="two">
               <div class="performance-times-roles">
                 <div class="performance-times">
-                  <div>03/05/14 5:30 p.m.</div>
-                  <div>03/15/14 10:30 a.m.</div>
-                  <div>03/20/14 8:30 p.m.</div>
-                  <div>05/05/14 1:30 p.m.</div>
+                  <div>{{ role_result.eventstimes.daytime }}</div>
                 </div>
                 <div class="performance-times-roles-divider"></div>
                 <div class="performance-roles">
-                  <div>Role: Frankenstein</div>
-                  <div>Role: Monster</div>
-                  <div>Role: Tree</div>
-                  <div>Role: The Fucking Eagle</div>
+                  <div>{{ role_result.actor.name }}</div>
                 </div>
               </div>
             </div>
@@ -186,40 +178,8 @@
           <a href="#" class="slider-right">See performance times</a>
           <a href="#" class="slider-left">Go back</a>
         </div>
-
-        <div class="people-search-result search-result">
-          <div class="search-result-slider" style="width: 430px; height: 100px">
-            <div data-slidr="one">
-              <div class="actor-image">
-                <img src="../../static/frankapp/images/"></img>
-              </div>
-              <div class="actor-information">
-                <div class="actor-information-name">Kien Hoang</div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, mi vel dictum sollicitudin, sem nulla cursus nulla, lacinia tristique quam augue et nulla. Maecenas ultrices eros non dui ultricies lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin porttitor magna quis rhoncus venenatis. Morbi sed sem nec leo lacinia hendrerit. Curabitur vel leo porttitor, dapibus felis et, luctus libero. Nullam est tellus, eleifend eget vehicula venenatis, luctus dictum risus.</div>
-              </div>
-            </div>
-            <div data-slidr="two">
-              <div class="performance-times-roles">
-                <div class="performance-times">
-                  <div>03/05/14 5:30 p.m.</div>
-                  <div>03/15/14 10:30 a.m.</div>
-                  <div>03/20/14 8:30 p.m.</div>
-                  <div>05/05/14 1:30 p.m.</div>
-                </div>
-                <div class="performance-times-roles-divider"></div>
-                <div class="performance-roles">
-                  <div>Role: Frankenstein</div>
-                  <div>Role: Monster</div>
-                  <div>Role: Tree</div>
-                  <div>Role: The Fucking Eagle</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <a href="#" class="slider-right">See performance times</a>
-          <a href="#" class="slider-left">Go back</a>
-        </div>
+        {% endfor %}
+        {% endif %}
       </div>
     </div>
   </body>
