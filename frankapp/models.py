@@ -39,7 +39,7 @@ class ActorsRoles(models.Model):
 	def getkey(self):
                 return self.actor.name
         def getvalue(self):
-                return self.role.name
+                return [self.role.name,self.eventstimes.event.name,self.eventstimes.event.stage.name,str(self.eventstimes.daytime)]
     
 class Crew(models.Model):
 	name = models.CharField(max_length=30)
@@ -60,4 +60,4 @@ class CrewResponsibilities(models.Model):
 	def getkey(self):
                 return self.crew.name
         def getvalue(self):
-                return self.responsibility.name
+                return [self.responsibility.name,self.stage.name]
