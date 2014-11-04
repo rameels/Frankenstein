@@ -49,9 +49,9 @@ def resultsToDict(results):
     
     for result in results:
         
-        if (result.actor.name not in response_data):
-            response_data[result.getkey(result)] = [result.role.name]
+        if (result.getkey() not in response_data):
+            response_data[result.getkey()] = [result.getvalue()]
         else:
-            response_data[result.actor.name].append(result.role.name)
+            response_data[result.getkey()].append(result.getvalue())
             
     return response_data
