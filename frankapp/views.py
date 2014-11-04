@@ -31,7 +31,8 @@ def searchpeople(request):
         return render(request, 'frankapp/people.html', {'results': results})
     else:
         print "should return json"
-        return HttpResponse(json.dumps({'results': str(results)}), content_type="application/json")
+        print resultsToDict(results)
+        return HttpResponse(json.dumps(resultsToDict(results)), content_type="application/json")
     
 def searchevents(request):
     results_list = []
@@ -47,11 +48,12 @@ def searchevents(request):
 
 def resultsToDict(results):
     response_data = {}
-    i = 1
+    
     for result in results:
+        
         if (result.actor.name not in response_data):
-            response_data[result.actor.name] = result.role.name
+            response_data[result.getkey(result)] = [result.role.name]
         else:
-            response_data[result.actor.name + '_' + str(i)] = result.role.name
-            i = i + 1
+            response_data[result.actor.name].append(result.role.name)
+            
     return response_data
