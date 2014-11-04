@@ -1,7 +1,9 @@
-import json
+import json, urllib
 from django.shortcuts import render
 from django.http import HttpResponse
 from frankapp.models import *
+from datetime import datetime
+from django.utils import timezone
 
 # Create your views here.
 def index(request):
@@ -16,11 +18,17 @@ def searchpeople(request):
             
     if 'types' in request.GET:
         types = request.GET['types']
-        name = request.GET.get('name')
-        performing_start = request.GET.get('performing_start')
-        performing_end = request.GET.get('performing_end')
+        if 'name' in request.GET:
+            name = request.GET.get('name')
         if 'actor' in types:
-            results = ActorsRoles.objects.filter(actor__name__contains=name, eventstimes__daytime.date()>=performing_start, eventstimes__daytime.date()<=performing_end)
+            if 'startDate' and 'endDate' in request.GET:
+                start_date = urllib.unquote(request.GET.get('startDate')).decode('utf8').split('/')
+                start_datetime = datetime(int(start_date[2]), int(start_date[0]), int(start_date[1]),0,0)
+                end_date = urllib.unquote(request.GET.get('endDate')).decode('utf8').split('/')
+                end_datetime = datetime(int(end_date[2]), int(end_date[0]), int(end_date[1]),0,0)
+                results = ActorsRoles.objects.filter(actor__name__contains=name, eventstimes__daytime__gte=start_datetime, eventstimes__daytime__lte=end_datetime)
+            else:
+                results = ActorsRoles.objects.filter(actor__name__contains=name)
         elif 'crew' in types:
             results = CrewResponsibilities.objects.filter(crew__name__contains=name)
         elif 'role' in types:
