@@ -180,6 +180,7 @@
 
 .search-results .search-result {
   border: #fff 1px solid;
+  padding-bottom: 10px;
 }
 
 .search-results .search-result:nth-child(even) {
@@ -194,6 +195,8 @@
   display: inline-block;
   float: left;
   height: 75px;
+  margin-left: 5px;
+  margin-top: 20px;
   width: 75px;
 }
 
@@ -208,5 +211,50 @@
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 5px;
+}
+
+.slider-right {
+  display: inline-block;
+  float: right;
+  margin-top: 35px;
+  width: 150px;
+}
+
+.slider-left {
+  display: inline-block;
+  float: right;
+  margin-top: 45px;
+  width: 90px;
+}
+
+.search-result-slider {
+  display: inline-block;
+}
+
+.performance-times-roles {
+  height: 80px;
+  margin-left: 30px;
+  margin-top: 20px;
+  width: 600px;
+}
+
+.performance-times {
+  display: inline-block;
+  float: left;
+  width: 170px;
+}
+
+.performance-roles {
+  display: inline-block;
+  float: left;
+  width: 250px;
+}
+
+.performance-times-roles-divider {
+  border: 1px solid #DCDCDC;
+  display: inline-block;
+  float: left;
+  height: 70px;
+  margin-right: 35px;
 }
 
