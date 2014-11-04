@@ -20,7 +20,7 @@ def searchpeople(request):
         performing_start = request.GET.get('performing_start')
         performing_end = request.GET.get('performing_end')
         if 'actor' in types:
-            results = ActorsRoles.objects.filter(actor__name__contains=name, eventstimes__daytime.date()>=performing_start, eventstimes__daytime.date()<=performing_end)
+            results = ActorsRoles.objects.filter(actor__name__contains=name)
         elif 'crew' in types:
             results = CrewResponsibilities.objects.filter(crew__name__contains=name)
         elif 'role' in types:
