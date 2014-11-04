@@ -20,7 +20,7 @@ def searchpeople(request):
         if 'actor' in types:
             results = ActorsRoles.objects.filter(actor__name__contains=name)
         elif 'crew' in types:
-            results = CrewResponsibilities.objects.filter(crew__name_contains=name)
+            results = CrewResponsibilities.objects.filter(crew__name__contains=name)
         elif 'role' in types:
             results = ActorsRoles.objects.filter(role__name__contains=name)
             
