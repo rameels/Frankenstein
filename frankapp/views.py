@@ -19,19 +19,17 @@ def searchpeople(request):
         name = request.GET.get('name')
         if 'actor' in types:
             results = ActorsRoles.objects.filter(actor__name=name)
-        else if 'crew' in types:
+        elif 'crew' in types:
             results = CrewResponsibilities.objects.filter(crew__name=name)
-        else if 'role' in types:
+        elif 'role' in types:
             results = ActorsRoles.objects.filter(role__name=name)
             
-        for result in results:
-            print result.actor.name + ": " + result.role.name
-
+        print str(results)
     if android == False:
         return render(request, 'frankapp/people.html', {'results': results})
     else:
         print "should return json"
-        return HttpResponse(json.dumps(resultsToDict(results)), content_type="application/json")
+        return HttpResponse(json.dumps({'results': str(results)}), content_type="application/json")
     
 def searchevents(request):
     results_list = []
