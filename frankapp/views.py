@@ -63,7 +63,7 @@ def searchevents(request):
             crew = types['crew']
         if 'role' in types:
             role = types['role']
-    return render(request, 'frankapp/events.html', {'results_list': results})
+    return render(request, 'frankapp/events.html', {'results_list': results_list})
 
 def resultsToDict(results):
     response_data = {}
