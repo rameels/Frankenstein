@@ -11,7 +11,9 @@ def index(request):
 
 def searchpeople(request):
     android = False
-    
+    actors_results = []
+    crew_results = []
+    role_results = []
     if 'android' in request.GET:
         if 'true' in request.GET['android']:
             android = True
@@ -26,17 +28,23 @@ def searchpeople(request):
                 start_datetime = datetime(int(start_date[2]), int(start_date[0]), int(start_date[1]),0,0)
                 end_date = urllib.unquote(request.GET.get('endDate')).decode('utf8').split('/')
                 end_datetime = datetime(int(end_date[2]), int(end_date[0]), int(end_date[1]),0,0)
-                results = ActorsRoles.objects.filter(actor__name__contains=name, eventstimes__daytime__gte=start_datetime, eventstimes__daytime__lte=end_datetime)
+                actors_results = ActorsRoles.objects.filter(actor__name__contains=name, eventstimes__daytime__gte=start_datetime, eventstimes__daytime__lte=end_datetime)
             else:
-                results = ActorsRoles.objects.filter(actor__name__contains=name)
-        elif 'crew' in types:
-            results = CrewResponsibilities.objects.filter(crew__name__contains=name)
-        elif 'role' in types:
-            results = ActorsRoles.objects.filter(role__name__contains=name)
-            
+                actors_results = ActorsRoles.objects.filter(actor__name__contains=name)
+        if 'crew' in types:
+            crew_results = CrewResponsibilities.objects.filter(crew__name__contains=name)
+        if 'role' in types:
+            role_results = ActorsRoles.objects.filter(role__name__contains=name)
+        results = {}
+        if actors_results : 
+            results['actors_results'] = actors_results
+        if crew_results :
+            results['crew_results'] = crew_results
+        if role_results :
+            results['role_results'] = role_results
         print str(results)
     if android == False:
-        return render(request, 'frankapp/people.html', {'results': results})
+        return render(request, 'frankapp/people.html', {'actors_results': actors_results})
     else:
         print "should return json"
         print resultsToDict(results)
