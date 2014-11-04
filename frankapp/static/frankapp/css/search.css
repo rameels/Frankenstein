@@ -200,14 +200,14 @@
   width: 75px;
 }
 
-.actor-information {
+.actor-information, .event-information {
   display: inline-block;
   float: left;
   margin-left: 20px;
   width: 300px;
 }
 
-.actor-information-name {
+.actor-information-name, .event-information-name {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 5px;
