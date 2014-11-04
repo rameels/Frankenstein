@@ -16,13 +16,14 @@ def searchpeople(request):
             
     if 'types' in request.GET:
         types = request.GET['types']
-        print request.GET.get('name')
+        name = request.GET.get('name')
         if 'actor' in types:
-            results = ActorsRoles.objects.filter(actor__name=request.GET.get('name'))
-        #if 'crew' in types:
-        #crew = types['crew']
-        #if 'role' in types:
-        #role = types['role']
+            results = ActorsRoles.objects.filter(actor__name=name)
+        else if 'crew' in types:
+            results = CrewResponsibilities.objects.filter(crew__name=name)
+        else if 'role' in types:
+            results = ActorsRoles.objects.filter(role__name=name)
+            
         for result in results:
             print result.actor.name + ": " + result.role.name
 
