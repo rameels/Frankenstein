@@ -51,3 +51,5 @@ class CrewResponsibilities(models.Model):
 	crew = models.ForeignKey(Crew)
 	responsibility = models.ForeignKey(Responsibilities)
 	stage = models.ForeignKey(Stages)
+	def __unicode__(self):
+		return self.crew.name + ": " + self.responsibility.name + ", " + self.stage.name

@@ -1,14 +1,15 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <link rel="stylesheet" href="../../static/frankapp/css/search.css" />
+  	{% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static "frankapp/css/search.css" %}" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 
-    <script src="../../static/frankapp/js/slider.js"></script>
-    <script src="../../static/frankapp/js/search.js"></script>
+    <script src="{% static "frankapp/js/slider.js" %}"></script>
+    <script src="{% static "frankapp/js/search.js" %}"></script>
   </head>
   <body>
     <div class="page-contents">
