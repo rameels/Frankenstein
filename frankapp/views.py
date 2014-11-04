@@ -51,16 +51,30 @@ def searchpeople(request):
         return HttpResponse(json.dumps(resultsToDict(results)), content_type="application/json")
     
 def searchevents(request):
-    results_list = []
-    if 'types' in request.GET:
-        types = request.GET['types']
-        if 'actor' in types:
-            actor = types['actor']
-        if 'crew' in types:
-            crew = types['crew']
-        if 'role' in types:
-            role = types['role']
-    return render(request, 'frankapp/events.html', {'results_list': results})
+    android = False
+    results = []
+    if 'android' in request.GET:
+        if 'true' in request.GET['android']:
+            android = True
+        if 'name' in request.GET:
+            name = request.GET.get('name')
+        if 'startDate' and 'endDate' in request.GET:
+            start_date = urllib.unquote(request.GET.get('startDate')).decode('utf8').split('/')
+            start_datetime = datetime(int(start_date[2]), int(start_date[0]), int(start_date[1]),0,0)
+            end_date = urllib.unquote(request.GET.get('endDate')).decode('utf8').split('/')
+            end_datetime = datetime(int(end_date[2]), int(end_date[0]), int(end_date[1]),0,0)
+            results = EventsTimes.objects.filter(event__name__contains=name, daytime__gte=start_datetime, daytime__lte=end_datetime)
+        else:
+            results = EventsTimes.objects.filter(event__name__contains=name)
+        resultsdict = {'results' : results}
+        print str(results)
+    if android == False:
+        print resultsdict
+        return render(request, 'frankapp/events.html', resultsdict)
+    else:
+        print "should return json"
+        print resultsToDict(results)
+        return HttpResponse(json.dumps(resultsToDict(results)), content_type="application/json")
 
 def resultsToDict(results):
     response_data = {}
