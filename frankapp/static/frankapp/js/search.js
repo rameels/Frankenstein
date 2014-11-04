@@ -79,7 +79,8 @@ $(document).ready(function() {
 
 
   $('.actor-image').each(function() {
-    var photoSource = '../../static/frankapp/images/actor' + Math.floor((Math.random() * 5) + 1) + '.jpg';
-    $(this).find('img').attr('src', photoSource);
+    var photoSource = 'actor' + Math.floor((Math.random() * 5) + 1) + '.jpg';
+    var $image = $(this).find('img');
+    $image.attr('src', $image.attr('src') + photoSource);
   });
 });
