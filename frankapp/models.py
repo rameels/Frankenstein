@@ -7,6 +7,8 @@ class Stages(models.Model):
 	description = models.CharField(max_length=100)
 	def __unicode__(self):
 		return self.name
+	def getData(self):
+                return [self.id, str(self.name), str(self.description)]
 
 class Events(models.Model):
 	name = models.CharField(max_length=100)
@@ -15,20 +17,28 @@ class Events(models.Model):
 	stage = models.ForeignKey(Stages)
 	def __unicode__(self):
 		return self.name
+	def getData(self):
+                return [self.id, str(self.name), str(self.description), self.duration, self.stage.id]
 
 class EventsTimes(models.Model):
 	daytime = models.DateTimeField()
 	event = models.ForeignKey(Events)
+	def getData(self):
+                return [self.id, str(self.daytime), self.event.id]
 
 class Actors(models.Model):
 	name = models.CharField(max_length=30)
 	def __unicode__(self):
 		return self.name
+	def getData(self):
+                return [self.id, str(self.name)]
     
 class Roles(models.Model):
 	name = models.CharField(max_length=30)
 	def __unicode__(self):
 		return self.name
+	def getData(self):
+                return [self.id, str(self.name)]
  
 class ActorsRoles(models.Model):
 	actor = models.ForeignKey(Actors)
@@ -40,16 +50,22 @@ class ActorsRoles(models.Model):
                 return self.actor.name
         def getvalue(self):
                 return [self.role.name,self.eventstimes.event.name,self.eventstimes.event.stage.name,str(self.eventstimes.daytime)]
+        def getData(self):
+                return [self.id, self.actor.id, self.role.id, self.eventstimes.id]
     
 class Crew(models.Model):
 	name = models.CharField(max_length=30)
 	def __unicode__(self):
 		return self.name
+	def getData(self):
+                return [self.id, str(self.name)]
     
 class Responsibilities(models.Model):
 	name = models.CharField(max_length=30)
 	def __unicode__(self):
 		return self.name
+	def getData(self):
+                return [self.id, str(self.name)]
  
 class CrewResponsibilities(models.Model):
 	crew = models.ForeignKey(Crew)
@@ -61,3 +77,5 @@ class CrewResponsibilities(models.Model):
                 return self.crew.name
         def getvalue(self):
                 return [self.responsibility.name,self.stage.name]
+        def getData(self):
+                return [self.id, self.crew.id, self.responsibility.id, self.stage.id]
