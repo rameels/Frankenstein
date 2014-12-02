@@ -9,6 +9,10 @@ from django.utils import timezone
 def index(request):
     return render(request, 'frankapp/index.html')
 
+def updatedb(request):
+    print request.POST
+    print 'hey!'
+
 def getdatafromdb(request):
     results = {}
 
@@ -31,6 +35,9 @@ def getdatafromdb(request):
         types = request.GET['types']
         if 'all' in types:
             types = allType
+        elif 'mangoevents' in types:
+            results = mangoevents('')
+            
         for typename in allType:
             if typename in types:
                 results[typename] = toDict(allOptions[typename])
@@ -93,6 +100,27 @@ def searchevents(request):
     else:
         return HttpResponse(json.dumps(resultsToDict(results)), content_type="application/json")
 
+def mangoevents(name):
+
+    eventstimelist = searchEvents(name)
+
+    resultsdict = {}
+
+    for eventtime in eventstimelist:
+        resultsdict[eventtime.id] = eventtime.event.getBasicData()
+
+        resultsdict[eventtime.id].append(str(eventtime.daytime))
+
+        actorsroleslist = searchActorRoleByEventTime(eventtime.id)
+        actorsrolesidlist = []
+
+        for actorrole in actorsroleslist:
+            actorsrolesidlist.append({'actor_id':actorrole.actor.id, 'role_id':actorrole.role.id})
+        
+        resultsdict[eventtime.id].append(actorsrolesidlist)
+
+    return resultsdict
+
 # search methods begin. search*** is for the relations, and return*** for the rest
 
 def toDict(results):
@@ -136,6 +164,9 @@ def searchActor(name):
 
 def searchActorTime(start_datetime, end_datetime, name):
     return ActorsRoles.objects.filter(actor__name__contains=name, eventstimes__daytime__gte=start_datetime, eventstimes__daytime__lte=end_datetime)
+
+def searchActorRoleByEventTime(et_id):
+    return ActorsRoles.objects.filter(eventstimes__id = et_id)
 
 # Search methods end
 

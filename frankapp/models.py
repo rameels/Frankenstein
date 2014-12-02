@@ -19,6 +19,8 @@ class Events(models.Model):
 		return self.name
 	def getData(self):
                 return [self.id, str(self.name), str(self.description), self.duration, self.stage.id]
+        def getBasicData(self):
+                return [str(self.name), str(self.description), self.duration, self.stage.id]
 
 class EventsTimes(models.Model):
 	daytime = models.DateTimeField()
