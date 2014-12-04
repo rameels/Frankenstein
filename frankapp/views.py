@@ -9,9 +9,27 @@ from django.utils import timezone
 def index(request):
     return render(request, 'frankapp/index.html')
 
-def updatedb(request):
-    print request.POST
-    print 'hey!'
+##def updatedb(request):
+##    print request.POST
+##    print 'hey!'
+##    if request.method == 'POST':
+
+def updateevents(request):
+    if request.method == 'POST':
+        edit_eventtime_list = request.getlist('times')
+        create_eventtime_list = request.getlist('new_times')
+        delete_eventtime_list = request.getlist('deleted_times')
+        event_name = request.get('names')
+
+        print edit_eventtime_list
+        print create_eventtime_list
+        print delete_eventtime_list
+        print event_name
+    return []
+    
+def editeventtime(evntlist)
+    for eventtime
+    return []
 
 def getdatafromdb(request):
     results = {}

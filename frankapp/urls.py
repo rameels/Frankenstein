@@ -10,4 +10,5 @@ urlpatterns = patterns('',
                        url(r'^search/events/$', views.searchevents),
                        url(r'^mongopie/$', views.getdatafromdb),
                        url(r'^youshouldnotgethere/$', views.updatedb),
+                       url(r'^/events/edit$', views.updateevents),
 )
