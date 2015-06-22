@@ -1,4 +1,4 @@
-id,year,month,day,hour,minute,event_id
+id,year,month,day,hour,minute,event
 1,2015,4,22,20,0,1
 2,2015,4,22,20,5,2
 3,2015,4,22,20,20,3

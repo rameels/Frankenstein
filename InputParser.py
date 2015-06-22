@@ -2,6 +2,8 @@ import csv
 from frankapp.models import Stages, Events, EventsTimes, Actors, Roles, ActorsRoles, Crew, Responsibilities, CrewResponsibilities
 from datetime import datetime
 from django.utils import timezone
+import django
+django.setup()
 
 with open('Stage.csv', 'rb') as f:
     reader = csv.reader(f, delimiter=',')

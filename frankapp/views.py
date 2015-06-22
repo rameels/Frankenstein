@@ -27,9 +27,9 @@ def updateevents(request):
         print event_name
     return []
     
-def editeventtime(evntlist)
-    for eventtime
-    return []
+# def editeventtime(evntlist)
+#     for eventtime:
+#         return []
 
 def getdatafromdb(request):
     results = {}

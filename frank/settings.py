@@ -57,20 +57,18 @@ WSGI_APPLICATION = 'frank.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangostack',
-        'HOST': '/home/rameel/djangostack-1.6.7-0/postgresql',
-        'PORT': '5432',
-        #'USER': 'bitnami',
-        #'PASSWORD': '55c3a0962a'
-        'USER': 'postgres',
-        'PASSWORD': '123',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'frankenstein',
+#         #'HOST': 'localhost',
+#         'PORT': '',
+#         'USER': 'rameel',
+#         'PASSWORD': '',
+#     }
+# }
 
-EXAMPLE_DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
