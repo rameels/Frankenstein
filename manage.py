@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
-import csv
 from frankapp.models import Stages, Events, EventsTimes, Actors, Roles, ActorsRoles, Crew, Responsibilities, CrewResponsibilities
-from datetime import datetime
-from django.utils import timezone
 
 if __name__ == "__main__":
 	os.environ.setdefault("DJANGO_SETTINGS_MODULE", "frank.settings")
