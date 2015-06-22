@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
             name='EventsTimes',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('daytime', models.DateTimeField(auto_now_add=True)),
+                ('daytime', models.DateTimeField()),
                 ('event', models.ForeignKey(to='frankapp.Events')),
             ],
         ),

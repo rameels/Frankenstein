@@ -27,7 +27,7 @@ class Events(models.Model):
 		return [str(self.name), str(self.description), self.duration, self.stage.id]
 
 class EventsTimes(models.Model):
-	daytime = models.DateTimeField(auto_now_add=True)
+	daytime = models.DateTimeField(auto_now_add=False)
 	event = models.ForeignKey(Events)
 	
 	def getData(self):
